@@ -14,6 +14,10 @@
     <%= post.content %>
   </p>
 
+  <div class="ml-12 pl-4 my-4 border-l-2 border-green-500">
+    <%= render post.comments %>
+  </div>
+
   <% if action_name != "show" %>
     <%= link_to "Show this post", post, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this post', edit_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
