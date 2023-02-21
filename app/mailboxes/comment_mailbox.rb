@@ -1,6 +1,14 @@
 class CommentMailbox < ApplicationMailbox
   def process
-    Comment.create author: mail["from"].to_s, content: mail.body.to_s, post: post
+    comment = Comment.new author: mail["from"].to_s, post: post
+    comment.content = if mail.html_part
+      mail.html_part.decoded
+    elsif mail.text_part
+      mail.text_part.decoded
+    else
+      mail.decoded
+    end
+    comment.save
   end
 
   def post
