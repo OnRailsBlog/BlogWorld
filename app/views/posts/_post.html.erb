@@ -16,6 +16,7 @@
 
   <div class="ml-12 pl-4 my-4 border-l-2 border-green-500">
     <%= render post.comments %>
+    <%= mail_to "comment+#{post.id}@whatever.com", class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 
   <% if action_name != "show" %>
